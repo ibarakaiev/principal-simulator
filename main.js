@@ -6,13 +6,16 @@ var supporters = {
     "image": 100
 }
 
-var endowment = 1500000000;
+var endowment = 1000000000;
+var originalEndowment = 1000000000;
 var revenue = 100000000;
-var expenses = 120000000;
+var expenses = 100000000;
+var week = 0;
 
 var scenario;
 
 function updatePanel() {
+    $("#week").text(week)
     $("#endowment").text("$" + (endowment / 1000000000) + "bn");
     $("#revenue").text("$" + (revenue / 1000000) + "mn");
     $("#expenses").text("$" + (expenses / 1000000) + "mn");
@@ -79,11 +82,20 @@ function selectOption(id) {
             supporters[item] = 100;
         }
     }
+
+    $("#option-outcome").text(option.outcome);
+
+    endowment += revenue - expenses;
+
     updatePanel();
     $(".results").fadeIn();
 }
 
 function initiateRound() {
+    week += 1;
+    if(week > 15){
+        endGame();
+    }
     $("#options").html("");
     $(".results").fadeOut();
     scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
@@ -105,4 +117,10 @@ function initiateRound() {
         $("#options").append("<button class='user-option button is-fullwidth is-outlined is-link is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
     }
     updatePanel();
+}
+
+function endGame() {
+    $("#game").fadeOut(function() {
+        $("#end").fadeIn();
+    });
 }

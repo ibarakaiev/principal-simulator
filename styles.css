@@ -7,6 +7,6 @@
     margin-bottom: 8px;
 }
 
-#game {
+#game, #end {
     display: none;
 }

@@ -34,7 +34,7 @@
 						faculty, and the school's image at large.</p>
 					<p>Be sure to consider everyone's interests when making decisions. If any group becomes too
 						dissatisfied, the school will suffer!</p>
-					<p><strong>If the endowment grows by the end of the term, you win! But if it decreases, you lose.
+					<p><strong>If the endowment grows by the end of the year (15 rounds), you win! But if it decreases, you lose.
 						Each group's satisfaction will indirectly affect the endowment, so be careful! But
 						ultimately, all that matters is that endowment!</strong></p>
 					<p>On behalf of the entire school community, we wish you the best of luck during your tenure
@@ -43,11 +43,18 @@
 					<hr>
 					<button class="button is-success is-large" onclick="startGame()">Start Game</button>
 				</div>
+				<div id="end">
+					<h1>End screen! Tell them if they won or lost.</h1>
+				</div>
 				<div id="game">
 					<div class="columns">
 						<div class="column is-6">
 							<div id="scenario">
-								<h2 class="title is-2" id="meeting">
+								<h2 class="title is-2">
+									Week <span id="week">0</span>
+								</h2>
+								<hr>
+								<h2 class="subtitle" id="meeting">
 									Unknown Meeting
 								</h2>
 								<div class="box">
@@ -62,6 +69,7 @@
 									</div>
 								</div>
 								<div class="results">
+									<p id="option-outcome"></p>
 									<button class="button is-large is-success" onclick="initiateRound()">Next
 										Round</button>
 								</div>
