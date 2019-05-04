@@ -77,7 +77,6 @@ async function updatePanel() {
     $("#revenue").text("$" + (revenue / 1000000) + "mn");
     $("#expenses").text("$" + (expenses / 1000000) + "mn");
     await process_lerp();
-    console.log("hello");
 }
 
 async function resultsFadeIn() {
@@ -155,7 +154,7 @@ function initiateRound() {
         endGame();
     }
     $("#options").html("");
-    $(".results").slideUp();
+    $(".results").fadeOut();
     var id = Math.floor(Math.random() * scenarios.length)
     scenario = scenarios[id];
     scenarios.splice(id, 1);
