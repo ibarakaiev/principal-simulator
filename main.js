@@ -49,6 +49,7 @@ function startGame() {
 function selectOption(id) {
     var option = scenario.options[id];
 
+    $("#situation-text").slideUp();
     $(".user-option").attr("disabled", "true");
     $("#option-" + id).removeClass("is-outlined");
 
@@ -81,6 +82,9 @@ function selectOption(id) {
         if (supporters[item] > 100) {
             supporters[item] = 100;
         }
+        if (supports[item] < 0) {
+            supporters[item] = 0;
+        }
     }
 
     $("#option-outcome").text(option.outcome);
@@ -88,7 +92,7 @@ function selectOption(id) {
     endowment += revenue - expenses;
 
     updatePanel();
-    $(".results").fadeIn();
+    $(".results").slideDown();
 }
 
 function initiateRound() {
@@ -97,7 +101,7 @@ function initiateRound() {
         endGame();
     }
     $("#options").html("");
-    $(".results").fadeOut();
+    $(".results").slideUp();
     scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
     var meetingText = "Meeting";
     if (scenario.from == "trustees") {
@@ -116,6 +120,7 @@ function initiateRound() {
     for (var i = 0; i < scenario.options.length; i++) {
         $("#options").append("<button class='user-option button is-fullwidth is-outlined is-link is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
     }
+    $("#situation-text").slideDown();
     updatePanel();
 }
 
