@@ -14,17 +14,50 @@ var week = 0;
 
 var scenario;
 
-function updatePanel() {
+function lerp(start, end, amt){
+    return (1 - amt) * start + amt * end;
+}
+
+async function process_lerp(element, initial, final) {
+    var total_time = 200;
+    var initial_students = $("#students").attr("value");
+    var initial_trustees = $("#trustees").attr("value");
+    var initial_parents = $("#parents").attr("value");
+    var initial_faculty = $("#faculty").attr("value");
+    var initial_image = $("#image").attr("value");
+    for (var i = 0; i < total_time; i++) {
+        var t = i / total_time;
+        t = Math.pow((1 - Math.pow((1 - t), 3)), (1 / 3));
+
+        // "#students", $("#students").attr("value"), supporters["students"]
+        $(element).attr("value", lerp(initial, final, t)).text(lerp(initial, final, t));
+        $("#students").attr("value", lerp(initial_students, supporters["students"], t))
+            .text(lerp(initial_students, supporters["students"], t));
+        $("#trustees").attr("value", lerp(initial_trustees, supporters["trustees"], t))
+            .text(lerp(initial_trustees, supporters["trustees"], t));
+        $("#parents").attr("value", lerp(initial_parents, supporters["parents"], t))
+            .text(lerp(initial_parents, supporters["parents"], t));
+        $("#faculty").attr("value", lerp(initial_faculty, supporters["faculty"], t))
+            .text(lerp(initial_faculty, supporters["faculty"], t));
+        $("#image").attr("value", lerp(initial_image, supporters["image"], t))
+            .text(lerp(initial_image, supporters["image"], t));
+
+        if (t > 0.99)
+            break;
+
+        await sleep(1);
+    }
+
+    return new Promise(resolve => setTimeout(resolve, 1));;
+}
+
+async function updatePanel() {
     $("#week").text(week)
     $("#endowment").text("$" + (endowment / 1000000000) + "bn");
     $("#revenue").text("$" + (revenue / 1000000) + "mn");
     $("#expenses").text("$" + (expenses / 1000000) + "mn");
-    $("#students").attr("value", supporters["students"]).text(supporters["students"]);
-    $("#trustees").attr("value", supporters["trustees"]).text(supporters["trustees"]);
-    $("#parents").attr("value", supporters["parents"]).text(supporters["parents"]);
-    $("#faculty").attr("value", supporters["faculty"]).text(supporters["faculty"]);
-    $("#image").attr("value", supporters["image"]).text(supporters["image"]);
-    $(".progress").removeClass("is-danger is-warning is-primary is-success").each(function (i, bar_item) {
+    await process_lerp();
+    /* $(".progress").removeClass("is-danger is-warning is-primary is-success").each(function (i, bar_item) {
         var bar = $(bar_item)
         if (bar.attr("value") < 40) {
             bar.addClass("is-danger")
@@ -35,7 +68,7 @@ function updatePanel() {
         } else {
             bar.addClass("is-success")
         }
-    })
+    })*/
 }
 
 function startGame() {
@@ -48,6 +81,7 @@ function startGame() {
 
 function selectOption(id) {
     var option = scenario.options[id];
+    
 
     $("#situation-text").slideUp();
     $(".user-option").attr("disabled", "true");
@@ -128,4 +162,8 @@ function endGame() {
     $("#game").fadeOut(function() {
         $("#end").fadeIn();
     });
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
