@@ -249,7 +249,7 @@ var scenarios = [{
                 label: "Raise tuition!",
                 results: {
                     students: -10,
-                    parents: -10,
+                    parents: -50,
                     faculty: -10,
                     image: -10,
                     trustees: 30,

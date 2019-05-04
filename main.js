@@ -143,7 +143,7 @@ function selectOption(id) {
 
     $("#option-outcome").text(option.outcome);
 
-    endowment += (revenue - expenses)/10;
+    endowment += (revenue - expenses)/3;
 
     updatePanel();
     resultsFadeIn();
