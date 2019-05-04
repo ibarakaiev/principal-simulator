@@ -2,7 +2,7 @@ var scenarios = [{
         from: "trustees",
         situation: "A long-time donor has offered the school an additional $10m to accept her child who was waitlisted during the regular application cycle.",
         options: [{
-                label: "Accept the student",
+                label: "Accept the student.",
                 results: {
                     students: -10,
                     trustees: 10,
@@ -13,7 +13,7 @@ var scenarios = [{
                 outcome: "Though students and faculty are somewhat unhappy with the acceptance, the donor also pledged a recurring $1m donation to the school in gratitude."
             },
             {
-                label: "Deny the student",
+                label: "Deny the student.",
                 results: {
                     students: 0,
                     trustees: -10,
@@ -28,7 +28,7 @@ var scenarios = [{
         from: "students",
         situation: "Students are requesting the complete and total discontinuation of parietal rules, so that any student can visit anyone else's dorm without supervision (except during study hours, of course).",
         options: [{
-                label: "Abolish parietal rules",
+                label: "Abolish parietal rules.",
                 results: {
                     students: 20,
                     parents: -15,
@@ -39,7 +39,7 @@ var scenarios = [{
                 outcome: "The students are thrilled. The parents and trustees are, well, not so thrilled. The school did get some positive press coverage, though!"
             },
             {
-                label: "Keep parietal rules unchanged",
+                label: "Keep parietal rules unchanged.",
                 results: {
                     students: -5,
                     parents: 5,
@@ -68,7 +68,7 @@ var scenarios = [{
                 outcome: "Because the old science building wasn't that old, the capital campaign wasn't as successful as anticipated. While you were able to raise $20m, the total cost came out to $50m. You did hang a whale skeleton in it, though, and that helped the school's image. Faculty and students were frustrated and viewed the new building as a frivolous expense."
             },
             {
-                label: "Keep the old science center",
+                label: "Keep the old science center.",
                 results: {
                     students: 0,
                     parents: -5,
@@ -136,7 +136,7 @@ var scenarios = [{
                 outcome: "That was stupid. Students don't want Saturday classes. Parents don't want Saturday classes. Faculty definitely don't want Saturday classes. Literally only the trustees wanted Saturday classes. Why did you even?"
             },
             {
-                label: "Laugh it off because Saturday classes suck",
+                label: "Laugh it off because Saturday classes suck.",
                 results: {
                     students: 10,
                     parents: 10,
