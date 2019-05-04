@@ -130,7 +130,7 @@ function selectOption(id) {
 
 function initiateRound() {
     week += 1;
-    if (week > 15) {
+    if (week > 5) {
         endGame();
     }
     $("#options").html("");
@@ -146,7 +146,19 @@ function initiateRound() {
 
 function endGame() {
     $("#game").fadeOut(function () {
-        $("#end").fadeIn();
+        var minSatisfaction = 100;
+        $(".progress").each(function(i, item){
+            item = $(item);
+            if(item.attr("value") < minSatisfaction){
+                minSatisfaction = item.attr("value")
+            }
+        })
+        $(".endowment").text("$" + (endowment / 1000000000) + "bn");
+        if(endowment > originalEndowment && minSatisfaction >= 40) {
+            $("#win").fadeIn();
+        }else{
+            $("#lose").fadeIn();
+        }
     });
 }
 
