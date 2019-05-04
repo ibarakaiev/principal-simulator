@@ -41,9 +41,10 @@
 					<p>Be sure to consider everyone's interests when making decisions. If any group becomes too
 						dissatisfied, the school will suffer!</p>
 					<p><strong>If the endowment grows by the end of the year (15 rounds), you win! But if it decreases,
-							you lose.
-							Each group's satisfaction will indirectly affect the endowment, so be careful! But
-							ultimately, all that matters is that big ol' endowment!</strong></p>
+							you lose. And if any group's satisfaction is below 40% (it'll be highlighted in red) at week
+							15, you'll also lose. But
+							ultimately, all that matters is growing that big ol' endowment (while also making sure no
+							one is too unhappy)!</strong></p>
 					<p>On behalf of the entire school community, we wish you the best of luck during your tenure
 						here.</p>
 					<p>Yours sincerely,<br>The Willips Community</p>
@@ -61,9 +62,6 @@
 									Week <span id="week">0</span>
 								</h2>
 								<hr>
-								<h2 class="subtitle" id="meeting">
-									Unknown Meeting
-								</h2>
 								<div class="box">
 									<div class="content">
 										<p class="is-size-3" id="situation-text">A donor has offered the school $5m to
@@ -105,10 +103,12 @@
 							<hr>
 
 							<p class="heading">Students</p>
-							<progress class="progress is-large is-info" value="100" id="students" max="100">100%</progress>
+							<progress class="progress is-large is-info" value="100" id="students"
+								max="100">100%</progress>
 
 							<p class="heading">Trustees & Donors</p>
-							<progress class="progress is-large is-info" value="90" id="trustees" max="100">90%</progress>
+							<progress class="progress is-large is-info" value="90" id="trustees"
+								max="100">90%</progress>
 
 							<p class="heading">Parents</p>
 							<progress class="progress is-large is-info" value="80" id="parents" max="100">80%</progress>
