@@ -116,7 +116,7 @@ function selectOption(id) {
         if (supporters[item] > 100) {
             supporters[item] = 100;
         }
-        if (supports[item] < 0) {
+        if (supporters[item] < 0) {
             supporters[item] = 0;
         }
     }
@@ -152,7 +152,7 @@ function initiateRound() {
     $("#meeting").text(meetingText);
     $("#situation-text").text(scenario.situation);
     for (var i = 0; i < scenario.options.length; i++) {
-        $("#options").append("<button class='user-option button is-fullwidth is-outlined is-link is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
+        $("#options").append("<button class='user-option button is-fullwidth is-outlined is-info is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
     }
     $("#situation-text").slideDown();
     updatePanel();
