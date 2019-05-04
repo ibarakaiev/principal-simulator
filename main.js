@@ -68,6 +68,15 @@ async function process_lerp(element, initial, final) {
         await sleep(1);
     }
 
+    $(".progress").each(function(i, item_sel){
+        var item = $(item_sel);
+        if(item.attr("value") < 40){
+            item.removeClass("is-info").addClass("is-danger");
+        }else{
+            item.removeClass("is-danger").addClass("is-info");
+        }
+    });
+
     return new Promise(resolve => setTimeout(resolve, 1));;
 }
 
