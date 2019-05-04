@@ -159,7 +159,7 @@ function selectOption(id) {
 
 function initiateRound() {
     week += 1;
-    if (week > 10) {
+    if (week > 9) {
         endGame();
     }
     $("#options").html("");

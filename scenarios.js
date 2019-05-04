@@ -121,52 +121,12 @@ var scenarios = [{
         ]
     },
     {
-        from: "faculty",
-        situation: "Faculty and staff request a $20,000 raise in salary.",
-        options: [{
-                label: "Give them a $30,000 raise!",
-                results: {
-                    students: 5,
-                    parents: -10,
-                    faculty: 100,
-                    image: 20,
-                    trustees: -20,
-                    expenses: 10000000,
-                },
-                outcome: "Teachers rejoiced, and students were happier too! Willips was praised in the local papers for being a leader in educator salaries. You had to raise tuition, though, so parents and trustees were a bit annoyed."
-            },
-            {
-                label: "Give them a $20,000 raise.",
-                results: {
-                    students: 5,
-                    parents: -10,
-                    faculty: 50,
-                    image: 20,
-                    trustees: -20,
-                    expenses: 7000000,
-                },
-                outcome: "Teachers were very happy with the change, and felt that their voice was heard. Students felt the benefit as well. Willips was praised in the local paper for its pioneering decision, but the trustees were annoyed that you didn't consult them first."
-            },
-            {
-                label: "Don't give them a raise.",
-                results: {
-                    students: 0,
-                    parents: 5,
-                    faculty: -20,
-                    image: -10,
-                    trustees: 10,
-                },
-                outcome: "Teachers were angry, but the budget remained untouched. Parents were relieved that there wouldn't be any increase in tuition."
-            }
-        ]
-    },
-    {
         from: "trustees",
         situation: "The trustees propose re-introducing Saturday classes to aid learning.",
         options: [{
                 label: "Do it! Saturday classes rock!",
                 results: {
-                    students: -50,
+                    students: -65,
                     parents: -20,
                     faculty: -30,
                     image: -30,
