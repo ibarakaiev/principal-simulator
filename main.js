@@ -143,7 +143,7 @@ function selectOption(id) {
 
     $("#option-outcome").text(option.outcome);
 
-    endowment += revenue - expenses;
+    endowment += (revenue - expenses)/10;
 
     updatePanel();
     resultsFadeIn();
@@ -151,7 +151,7 @@ function selectOption(id) {
 
 function initiateRound() {
     week += 1;
-    if (week > 5) {
+    if (week > 10) {
         endGame();
     }
     $("#options").html("");

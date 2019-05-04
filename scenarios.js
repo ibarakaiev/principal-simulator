@@ -214,5 +214,82 @@ var scenarios = [{
                 outcome: "Parents and students were slightly disappointed, but the trustees and donors were relieved that they didn't need to finance the ambitious decision. But things moved on as as per usual."
             }
         ]
+    },
+    {
+        from: "parents",
+        situation: "Feeling fond of wooden ovals, the Parents Association wants to replace every table in the school (including lunch tables) with Harkness tables.",
+        options: [{
+                label: "Follow the parents wishes.",
+                results: {
+                    students: -10,
+                    parents: 10,
+                    faculty: -10,
+                    image: 10,
+                    trustees: -20,
+                    endowment: -500000,
+                },
+                outcome: "Students, faculty, and trustees didn't like the decision, but parents were happy. Honestly, this was probably a bit unnecessary but whatever."
+            },
+            {
+                label: "Use your common sense.",
+                results: {
+                    students: 10,
+                    parents: -10,
+                    image: -5,
+                    trustees: 20
+                },
+                outcome: "Good choice. While parents weren't happy and it made the school seem resistant to change, students and trustees agreed with your decision."
+            }
+        ]
+    },
+    {
+        from: "trustees",
+        situation: "Worried that the endowment is slightly smaller than that of the rival school, the trustees propose making tuition $100,000 per year.",
+        options: [{
+                label: "Raise tuition!",
+                results: {
+                    students: -10,
+                    parents: -10,
+                    faculty: -10,
+                    image: -10,
+                    trustees: 30,
+                    revenue: 40000000,
+                },
+                outcome: "While students, parents, and faculty all protested the change, the trustees were happy with the additional $40m in revenue per year."
+            },
+            {
+                label: "Keep tuition unchanged.",
+                results: {
+                    students: 10,
+                    parents: 10,
+                    trustees: -20
+                },
+                outcome: "Trustees were disappointed (and remain concerned with the endowment's relative size), but students and parents were relieved."
+            }
+        ]
+    },
+    {
+        from: "trustees",
+        situation: "Some trustees suggest that you launch a new $100m capital campaign to finance, among other things, squash courts and shrimp ice sculptures.",
+        options: [{
+                label: "Launch the campaign!",
+                results: {
+                    students: -10,
+                    parents: -10,
+                    faculty: 10,
+                    image: 5,
+                    trustees: -10,
+                    endowment: 100000000,
+                },
+                outcome: "While no one was particularly exicted about the campaign, you did raise the money! Faculty were happy about their newfound resources."
+            },
+            {
+                label: "Give the donors a break.",
+                results: {
+                    trustees: 10
+                },
+                outcome: "The donors were relieved that their bank accounts were safe."
+            }
+        ]
     }
 ]
