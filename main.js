@@ -151,7 +151,7 @@ function selectOption(id) {
 
     $("#option-outcome").text(option.outcome);
 
-    endowment += (revenue - expenses)/10;
+    endowment += (revenue - expenses)/3;
 
     updatePanel();
     resultsFadeIn();
@@ -197,7 +197,7 @@ function endGame() {
                 minSatisfaction = item.attr("value")
             }
         })
-        $(".endowment").text("$" + (endowment / 1000000000) + "bn");
+        $(".endowment").text("$" + Math.round(endowment / 10000000) / 100 + "bn");
         if(endowment > originalEndowment && minSatisfaction >= 40) {
             $("#win").fadeIn();
         }else{
