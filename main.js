@@ -94,9 +94,9 @@ function initiateRound() {
         meetingText = "Meeting with Students";
     } else if (scenario.from == "parents") {
         meetingText = "Meeting with Parents";
-    } else if (scenario.from == "students") {
+    } else if (scenario.from == "faculty") {
         meetingText = "Meeting with Faculty";
-    } else if (scenario.from == "students") {
+    } else if (scenario.from == "image") {
         meetingText = "Meeting with the Public";
     }
     $("#meeting").text(meetingText);
