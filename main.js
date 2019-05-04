@@ -57,18 +57,11 @@ async function updatePanel() {
     $("#revenue").text("$" + (revenue / 1000000) + "mn");
     $("#expenses").text("$" + (expenses / 1000000) + "mn");
     await process_lerp();
-    /* $(".progress").removeClass("is-danger is-warning is-primary is-success").each(function (i, bar_item) {
-        var bar = $(bar_item)
-        if (bar.attr("value") < 40) {
-            bar.addClass("is-danger")
-        } else if (bar.attr("value") < 60) {
-            bar.addClass("is-warning")
-        } else if (bar.attr("value") < 80) {
-            bar.addClass("is-primary")
-        } else {
-            bar.addClass("is-success")
-        }
-    })*/
+}
+
+async function resultsFadeIn() {
+    await sleep(100);
+    $(".results").fadeIn();
 }
 
 function startGame() {
@@ -116,7 +109,7 @@ function selectOption(id) {
         if (supporters[item] > 100) {
             supporters[item] = 100;
         }
-        if (supports[item] < 0) {
+        if (supporters[item] < 0) {
             supporters[item] = 0;
         }
     }
@@ -126,7 +119,7 @@ function selectOption(id) {
     endowment += revenue - expenses;
 
     updatePanel();
-    $(".results").slideDown();
+    resultsFadeIn();
 }
 
 function initiateRound() {
