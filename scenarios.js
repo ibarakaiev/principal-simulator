@@ -76,7 +76,7 @@ var scenarios = [{
                     image: -5,
                     trustees: 5
                 },
-                outcome: "Nothing changed—literally. Parents were a little disappointed, but the trustees were happy; after all, it meant that they didn't have to donate to another campaign!"
+                outcome: "Nothing changed -- literally. Parents were a little disappointed, but the trustees were happy; after all, it meant that they didn't have to donate to another campaign!"
             }
         ]
     },
