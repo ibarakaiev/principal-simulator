@@ -23,13 +23,12 @@ function lerp(start, end, amt){
 }
 
 function format_money(amount) {
-    // console.log("currently have " + amount + " money");
-    if (amount > 1000000000) {
-        return "$" + Math.round(amount / 1000000) / 100 + "bn";
-    } else if (amount > 1000000) {
+    if (amount >= 1000000000) {
+        return "$" + Math.round(amount / 10000000) / 100 + "bn";
+    } else if (amount >= 1000000) {
         return "$" + Math.round(amount / 10000) / 100 + "mn";
-    } else if (amount > 1000) {
-        return "$" + money;
+    } else {
+        return "$" + amount;
     }
 }
 
@@ -60,8 +59,8 @@ async function process_lerp(element, initial, final) {
             .text(lerp(initial_image, supporters["image"], t));
 
         $("#endowment").text(format_money(lerp(previous_endowment, endowment, t)));
-        $("#endowment").text(format_money(lerp(previous_revenue, revenue, t)));
-        $("#endowment").text(format_money(lerp(previous_expenses, expenses, t)));
+        $("#revenue").text(format_money(lerp(previous_revenue, revenue, t)));
+        $("#expenses").text(format_money(lerp(previous_expenses, expenses, t)));
         
         if (t > 0.995)
             break;
@@ -91,6 +90,7 @@ function startGame() {
         $("#game").fadeIn();
     });
 
+    updatePanel();
     initiateRound();
 }
 
@@ -119,9 +119,9 @@ function selectOption(id) {
         supporters["image"] += results.image;
     }
     
-    var previous_endowment = endowment;
-    var previous_revenue = revenue;
-    var previous_expenses = expenses;
+    previous_endowment = endowment;
+    previous_revenue = revenue;
+    previous_expenses = expenses;
 
     if (results.endowment != null) {
         endowment += results.endowment;
@@ -159,6 +159,7 @@ function initiateRound() {
     var id = Math.floor(Math.random() * scenarios.length)
     scenario = scenarios[id];
     scenarios.splice(id, 1);
+
     var meetingText = "Meeting";
     if (scenario.from == "trustees") {
         meetingText = "Meeting with Trustees & Donors";
@@ -177,7 +178,6 @@ function initiateRound() {
         $("#options").append("<button class='user-option button is-fullwidth is-outlined is-info is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
     }
     $("#situation-text").slideDown();
-    updatePanel();
 }
 
 function endGame() {
