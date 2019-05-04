@@ -1,5 +1,6 @@
 var scenarios = [
     {
+        from: "trustees",
         situation: "A donor has offered the school $5m to accept their child.",
         options: [
             {
@@ -8,7 +9,7 @@ var scenarios = [
                     students: -3,
                     trustees: 3,
                     faculty: -5,
-                    money: 5000000
+                    endowment: 5000000
                 }
             },
             {

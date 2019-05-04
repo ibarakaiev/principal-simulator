@@ -1,10 +1,104 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Principal Simulator</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" integrity="sha256-8B1OaG0zT7uYA572S2xOxWACq9NXYPQ+U5kHPV1bJN4=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+		integrity="sha256-8B1OaG0zT7uYA572S2xOxWACq9NXYPQ+U5kHPV1bJN4=" crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="scenarios.js"></script>
+	<script src="main.js"></script>
+	<link href="styles.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
 
+<body>
+	<section class="section">
+		<div class="container">
+			<div class="content">
+				<div id="intro" style="max-width: 720px;">
+					<!-- <figure class="image is-128x128">
+						<img src="assets/palfrey.jpeg" class="is-rounded">
+					</figure> -->
+					<h1 class="title is-size-1 is-inline">
+						Principal Simulator
+					</h1>
+					<hr>
+					<p>Hello,</p>
+					<p>Congratulations on your appointment as interim principal of Willips Dexeter Academy! The
+						school is thrilled to work with you over the course of the next year.</p>
+					<p>You will be presented with a series of important decisions, each of which can affect your
+						annual revenue, expenditures, and &mdash; perhaps most importantly &mdash; your
+						endowment. Decisions will also affect the satisfaction of students, donors, parents,
+						faculty, and the school's image at large.</p>
+					<p>Be sure to consider everyone's interests when making decisions. If any group becomes too
+						dissatisfied, the school will suffer!</p>
+					<p>On behalf of the entire school community, we wish you the best of luck during your tenure
+						here.</p>
+					<p>Yours sincerely,<br>The Willips Community</p>
+					<hr>
+					<button class="button is-success is-large" onclick="startGame()">Start Game</button>
+				</div>
+				<div id="game">
+					<div class="columns">
+						<div class="column is-6">
+							<div id="scenario">
+								<h2 class="title is-2" id="meeting">
+									Unknown Meeting
+								</h2>
+								<div class="box">
+									<div class="content">
+										<p class="is-size-3" id="situation-text">A donor has offered the school $5m to accept their child.
+											</h1>
+											<hr>
+											<div id="options">
+
+											</div>
+									</div>
+								</div>
+								<div class="results">
+									<button class="button is-large is-success" onclick="initiateRound()">Next Round</button>
+								</div>
+							</div>
+						</div>
+						<div class="column is-4 is-offset-1">
+							<h2 class="title is-2">
+								State of the Academy
+							</h2>
+							<hr>
+							<p class="heading">Endowment</p>
+							<p class="is-size-5 has-text-weight-semibold" id="endowment">??</p>
+
+							<p class="heading">Annual Revenue</p>
+							<p class="is-size-5 has-text-weight-semibold" id="revenue">??</p>
+
+							<p class="heading">Annual Expenses</p>
+							<p class="is-size-5 has-text-weight-semibold" id="expenses">??</p>
+
+							<hr>
+
+							<p class="heading">Students</p>
+							<progress class="progress is-medium" value="100" id="students" max="100">100%</progress>
+
+							<p class="heading">Trustees & Donors</p>
+							<progress class="progress is-medium" value="90" id="trustees" max="100">90%</progress>
+
+							<p class="heading">Parents</p>
+							<progress class="progress is-medium" value="80" id="parents" max="100">80%</progress>
+
+							<p class="heading">Faculty</p>
+							<progress class="progress is-medium" value="70" id="faculty" max="100">70%</progress>
+
+							<p class="heading">Image</p>
+							<progress class="progress is-medium" value="60" id="image" max="100">60%</progress>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
+
 </html>

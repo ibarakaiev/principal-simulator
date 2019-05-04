@@ -1,0 +1,12 @@
+.heading {
+    margin-bottom: 5px !important;
+    font-size: 13px;
+}
+
+.user-option {
+    margin-bottom: 8px;
+}
+
+#game {
+    display: none;
+}
