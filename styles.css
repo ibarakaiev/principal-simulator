@@ -7,6 +7,6 @@
     margin-bottom: 8px;
 }
 
-#game, #end {
+#game, #end, #win, #lose {
     display: none;
 }

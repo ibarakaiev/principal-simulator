@@ -52,8 +52,19 @@
 					<hr>
 					<button class="button is-success is-large" onclick="startGame()">Start Game</button>
 				</div>
-				<div id="end">
-					<h1>End screen! Tell them if they won or lost.</h1>
+				<div id="win" style="max-width: 720px; margin-top: 200px;">
+					<h1 class="has-text-success is-size-1">Well done, Dr. Headmaster!</h1>
+					<p class="is-size-4">Congratulations! Over the course of your tenure, the endowment grew to <strong
+							class="endowment">???</strong> and no group was too angry. Well done! The school looks
+						forward to welcoming you back next year.</p>
+					<button class="button is-info is-large" onclick="location.reload()">Play Again</button>
+				</div>
+				<div id="lose" style="max-width: 720px; margin-top: 200px;">
+					<h1 class="has-text-danger is-size-1">You failed! Shame! Shame!</h1>
+					<p class="is-size-4">After your tenure, the endowment was <strong class="endowment">???</strong>,
+						and the community was&mdash;well, meh. It's a good thing that you were only the <i>interim</i>
+						principal!</p>
+					<button class="button is-info is-large" onclick="location.reload()">Play Again</button>
 				</div>
 				<div id="game">
 					<div class="columns">
