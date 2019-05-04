@@ -23,9 +23,9 @@ function lerp(start, end, amt){
 }
 
 function format_money(amount) {
-    if (amount > 1000000000) {
+    if (amount >= 1000000000) {
         return "$" + Math.round(amount / 10000000) / 100 + "bn";
-    } else if (amount > 1000000) {
+    } else if (amount >= 1000000) {
         return "$" + Math.round(amount / 10000) / 100 + "mn";
     } else {
         return "$" + amount;
