@@ -1,9 +1,9 @@
 var supporters = {
-    "students": 75,
-    "faculty": 75,
-    "parents": 75,
-    "trustees": 75,
-    "image": 75
+    "students": 100,
+    "faculty": 100,
+    "parents": 100,
+    "trustees": 100,
+    "image": 100
 }
 
 var endowment = 1000000000;
@@ -12,10 +12,25 @@ var revenue = 100000000;
 var expenses = 100000000;
 var week = 0;
 
+var previous_endowment = endowment;
+var previous_revenue = revenue;
+var previous_expenses = expenses;
+
 var scenario;
 
-function lerp(start, end, amt) {
+function lerp(start, end, amt){
     return (1 - amt) * start + amt * end;
+}
+
+function format_money(amount) {
+    // console.log("currently have " + amount + " money");
+    if (amount > 1000000000) {
+        return "$" + Math.round(amount / 1000000) / 100 + "bn";
+    } else if (amount > 1000000) {
+        return "$" + Math.round(amount / 10000) / 100 + "mn";
+    } else if (amount > 1000) {
+        return "$" + money;
+    }
 }
 
 async function process_lerp(element, initial, final) {
@@ -25,6 +40,8 @@ async function process_lerp(element, initial, final) {
     var initial_parents = $("#parents").attr("value");
     var initial_faculty = $("#faculty").attr("value");
     var initial_image = $("#image").attr("value");
+
+    
     for (var i = 0; i < total_time; i++) {
         var t = i / total_time;
         t = Math.pow((1 - Math.pow((1 - t), 3)), (1 / 3));
@@ -42,18 +59,16 @@ async function process_lerp(element, initial, final) {
         $("#image").attr("value", lerp(initial_image, supporters["image"], t))
             .text(lerp(initial_image, supporters["image"], t));
 
-        if (t > 0.99)
+        $("#endowment").text(format_money(lerp(previous_endowment, endowment, t)));
+        $("#endowment").text(format_money(lerp(previous_revenue, revenue, t)));
+        $("#endowment").text(format_money(lerp(previous_expenses, expenses, t)));
+        
+        if (t > 0.995)
             break;
+
         await sleep(1);
     }
-    $(".progress").each(function(i, item_sel){
-        var item = $(item_sel);
-        if(item.attr("value") < 40){
-            item.removeClass("is-info").addClass("is-danger");
-        }else{
-            item.removeClass("is-danger").addClass("is-info");
-        }
-    });
+
     return new Promise(resolve => setTimeout(resolve, 1));;
 }
 
@@ -62,8 +77,8 @@ async function updatePanel() {
     $("#endowment").text("$" + (endowment / 1000000000) + "bn");
     $("#revenue").text("$" + (revenue / 1000000) + "mn");
     $("#expenses").text("$" + (expenses / 1000000) + "mn");
-
     await process_lerp();
+    console.log("hello");
 }
 
 async function resultsFadeIn() {
@@ -81,6 +96,7 @@ function startGame() {
 
 function selectOption(id) {
     var option = scenario.options[id];
+    
 
     $("#situation-text").slideUp();
     $(".user-option").attr("disabled", "true");
@@ -102,6 +118,11 @@ function selectOption(id) {
     if (results.image != null) {
         supporters["image"] += results.image;
     }
+    
+    var previous_endowment = endowment;
+    var previous_revenue = revenue;
+    var previous_expenses = expenses;
+
     if (results.endowment != null) {
         endowment += results.endowment;
     }
@@ -130,12 +151,27 @@ function selectOption(id) {
 
 function initiateRound() {
     week += 1;
-    if (week > 15) {
+    if(week > 15){
         endGame();
     }
     $("#options").html("");
     $(".results").slideUp();
-    scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+    var id = Math.floor(Math.random() * scenarios.length)
+    scenario = scenarios[id];
+    scenarios.splice(id, 1);
+    var meetingText = "Meeting";
+    if (scenario.from == "trustees") {
+        meetingText = "Meeting with Trustees & Donors";
+    } else if (scenario.from == "students") {
+        meetingText = "Meeting with Students";
+    } else if (scenario.from == "parents") {
+        meetingText = "Meeting with Parents";
+    } else if (scenario.from == "faculty") {
+        meetingText = "Meeting with Faculty";
+    } else if (scenario.from == "image") {
+        meetingText = "Meeting with the Public";
+    }
+    $("#meeting").text(meetingText);
     $("#situation-text").text(scenario.situation);
     for (var i = 0; i < scenario.options.length; i++) {
         $("#options").append("<button class='user-option button is-fullwidth is-outlined is-info is-large' id='option-" + i + "' onclick='selectOption(" + i + ")'>" + scenario.options[i].label + "</button>")
@@ -145,7 +181,7 @@ function initiateRound() {
 }
 
 function endGame() {
-    $("#game").fadeOut(function () {
+    $("#game").fadeOut(function() {
         $("#end").fadeIn();
     });
 }
